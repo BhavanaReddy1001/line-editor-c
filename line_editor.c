@@ -9,6 +9,7 @@ int lineCount = 0;
 
 void insertLine();
 void deleteLine();
+void displayDocument();
 
 int main()
 {
@@ -18,9 +19,10 @@ int main()
 
     while (1)
     {
-        printf("\n1. Insert Line\n");
-        printf("2. Delete Line\n");
-        printf("3. Exit\n");
+       printf("\n1. Insert Line\n");
+       printf("2. Delete Line\n");
+       printf("3. Display Document\n");
+       printf("4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -33,6 +35,10 @@ int main()
             deleteLine();
         }
         else if (choice == 3)
+        {
+            displayDocument();
+        }
+        else if (choice == 4)
         {
             printf("Exiting editor...\n");
             break;
@@ -105,4 +111,21 @@ void deleteLine()
     lineCount--;
 
     printf("Line deleted successfully.\n");
+}
+void displayDocument()
+{
+    if (lineCount == 0)
+    {
+        printf("Document is empty.\n");
+        return;
+    }
+
+    printf("\n--- Document ---\n");
+
+    for (int i = 0; i < lineCount; i++)
+    {
+        printf("%d. %s\n", i + 1, lines[i]);
+    }
+
+    printf("----------------\n");
 }
